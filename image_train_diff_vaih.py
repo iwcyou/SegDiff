@@ -31,7 +31,7 @@ def main():
     args = create_argparser().parse_args()
     args.use_fp16 = True
     args.clip_denoised = False
-    args.learn_sigma = False
+    args.learn_sigma = True #not effective
     args.sigma_small = False
     args.num_channels = 128
     args.image_size = 256

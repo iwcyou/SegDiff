@@ -130,7 +130,7 @@ def create_argparser():
         ema_rate="0.9999",  # comma-separated list of EMA values
         save_interval=5000,
         start_print_iter=75000,
-        log_interval=200,
+        log_interval=200, #print diagnostics every log_interval steps
         run_without_test=False,
         resume_checkpoint="",
         use_fp16=False,

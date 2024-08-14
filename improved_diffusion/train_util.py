@@ -213,7 +213,7 @@ class TrainLoop:
                 self.save_state_dict()
                 dist.barrier()
 
-            if self.step % self.save_interval == 0 and self.step >= start_print_iter or self.step == 60000:
+            if self.step % self.save_interval == 0 and self.step >= start_print_iter or self.step == 60000: #TODO 似乎从来没有进入这个分支
                 if self.run_without_test:
                     if dist.get_rank() == 0:
                         self.save_checkpoint(self.ema_rate[0], self.ema_params[0], name=f"model")
@@ -236,7 +236,7 @@ class TrainLoop:
                             logger.log(f"best iou ema val: {ema_val_miou} step {self.step}")
                             self.ema_val_best_iou = ema_val_miou
 
-                            ema_filename = self.save_checkpoint(self.ema_rate[0], self.ema_params[0], name=f"val_{ema_val_miou:.7f}")
+                            ema_filename = self.save_checkpoint(self.ema_rate[0], self.ema_params[0], name=f"val_{ema_val_miou:.7f}") #TODO:save best ema model
 
                             if self.val_current_model_ema_name != "":
                                 ckpt_path = bf.join(get_blob_logdir(), self.val_current_model_ema_name)
